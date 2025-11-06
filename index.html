@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OKOLEA CHAPCHAP</title>
+  <style>
+    /* Reset styles for consistency across browsers */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #008000;
+      color: #000000;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    /* Header styles */
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .icon {
+      font-size: 100px;
+      margin-bottom: 10px;
+    }
+ img {
+      width: 150px;
+      height: auto;
+      border-bottom: 50%;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #FFFFFF;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #000000;
+    }
+
+    /* STYLES FOR NEW PAYMENT PAGE (SET 2) - KEEPING ONLY GENERIC STYLES */
+    :root {
+      --primary-color: #00c79c;
+      --text-color: #333;
+      --white: #ffffff;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --border-radius: 12px;
+    }
+    
+    /* Container for pages */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #90EE90;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* Buttons style */
+    button {
+      background-color: #002bff;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      margin: 10px 0;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #0048b3;
+    }
+    
+    /* Removed copy-till-btn styles as commitment page is gone */
+
+    /* Inputs style */
+    input[type=text],
+    input[type=email],
+    input[type=tel],
+    input[type=date],
+    input[type=number],
+    input[type=password],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 16px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: #34495e;
+    }
+
+    /* Section styling */
+    .section {
+      margin-bottom: 20px;
+    }
+
+    /* Highlighted or bold text */
+    .bold-color {
+      font-weight: bold;
+      color: #000000;
+    }
+
+    /* Specific styles for highlighted amounts or labels */
+    .highlight {
+      font-weight: bold;
+      color: #000000;
+    }
+    
+    /* Removed copy-feedback styles as commitment page is gone */
+
+    /* Responsive adjustments for mobile */
+    @media (max-width: 600px) {
+      /* This h1 rule applies to the main header, not the payment page */
+      header h1 { font-size: 28px; } 
+      h2 { font-size: 18px; }
+      button { width: 100%; padding: 14px; font-size: 16px; }
+    }
+    
+    /* For hidden pages */
+    .hidden {
+      display: none;
+    }
+    /* For showing active pages */
+    .active {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #FFFFFF;
+      font-size: 14px;
+    }
+  </style>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'YOUR-PIXEL-ID-HERE'); // IMPORTANT: Replace with your actual Pixel ID
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=YOUR-PIXEL-ID-HERE&ev=PageView&noscript=1"
+  /></noscript>
+  </head>
+<body>
+  <header>
+    <img src="images.html/logo.jpg" alt="">
+    <h1>OKOLEA CHAPCHAP</h1>
+    <h2>Apply, Borrow, Repay your Loan Instantly!</h2>
+  </header>
+
+  <div class="container">
+    <section id="page-welcome" class="page active">
+      <p>Welcome to our loan platform! Start your journey today.</p>
+      <button id="start-btn" aria-controls="page-register" aria-expanded="false">APPLY NOW</button>
+    </section>
+
+    <section id="page-register" class="page hidden">
+      <h3>Register</h3>
+      <form id="register-form" autocomplete="off" aria-labelledby="register-label">
+        <label id="register-label" style="display:none;">Registration Form</label>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" placeholder="Enter first name" required />
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Enter last name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter email" />
+
+        <label for="phone">Phone number:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required />
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required />
+
+        <label for="pin">PIN:</label>
+        <input type="password" id="pin" name="pin" placeholder="Enter PIN" required />
+
+        <label for="confirmPin">Confirm PIN:</label>
+        <input type="password" id="confirmPin" name="confirmPin" placeholder="Confirm PIN" required />
+
+        <button type="button" id="register-submit">REGISTER</button>
+        <button type="button" id="to-login">Already have an account? Login</button>
+      </form>
+    </section>
+
+    <section id="page-login" class="page hidden">
+      <h3>Login</h3>
+      <form id="login-form" autocomplete="off" aria-labelledby="login-label">
+        <label id="login-label" style="display:none;">Login Form</label>
+        <label for="login-phone">Number:</label>
+        <input type="tel" id="login-phone" placeholder="Enter your number" required />
+
+        <label for="login-pin">PIN:</label>
+        <input type="password" id="login-pin" placeholder="Enter your PIN" required />
+
+        <button type="button" id="login-btn">LOGIN</button>
+        <button type="button" id="back-to-register">Back to Register</button>
+      </form>
+    </section>
+
+    <section id="page-dashboard" class="page hidden">
+      <h3>Welcome, <span id="user-name"></span></h3>
+
+      <button id="apply-loan-btn">Application</button>
+
+      <div class="section" id="loan-status-section">
+        <h4>Current Loan Status</h4>
+        <p><span class="highlight" id="current-loan-status">You currently don't have any loan in progress.</span></p>
+      </div>
+
+      <div class="section" id="help-section">
+        <h4><span class="bold-color">Need Help?</span></h4>
+        <button id="view-faqs-btn">View FAQs</button>
+      </div>
+
+      <button id="logout-btn">Logout</button>
+    </section>
+
+    <section id="page-faqs" class="page hidden">
+      <h3>FAQs</h3>
+      <div>
+        <p><strong>Q: How is interest calculated on the loan?</strong></p>
+        <p>A: We use the formula: interest = 7% * loan amount borrowed * period (in months).</p>
+        
+        <p><strong>Q: How is the loan disbursed?</strong></p>
+        <p>A: We disburse only to M-pesa numbers.</p>
+      </div>
+      <button id="faqs-back-btn">Back</button>
+    </section>
+
+    <section id="page-application" class="page hidden">
+      <h3>Apply for Loan</h3>
+      <div>
+        <p><span class="bold-color">Purpose of Loan:</span> Please select reason as to why you need a loan (select below).</p>
+        <select id="loan-reason" required>
+          <option value="">--Please choose reason--</option>
+          <option value="Business">Business loan</option>
+          <option value="Education">Education loan</option>
+          <option value="Farming">Farming loan</option>
+          <option value="Medication">Medication loan</option>
+          <option value="Emergency">Emergency loan</option>
+        </select>
+        <button id="continue-loan-purpose">Continue</button>
+      </div>
+    </section>
+
+    <section id="page-loan-details" class="page hidden">
+      <h3>Loan Details</h3>
+      <p>Please answer the questions below:</p>
+      <div>
+        <label for="county">1. Which is your County?</label>
+        <select id="county" required>
+          <option value="">--Choose one--</option>
+          <option value="Nairobi">Nairobi</option>
+          <option value="Mombasa">Mombasa</option>
+          <option value="Nakuru">Nakuru</option>
+          <option value="Kericho">Kericho</option>
+          <option value="Bomet">Bomet</option>
+        </select>
+
+        <label for="crb">2. Are you listed in CRB?</label>
+        <select id="crb" required>
+          <option value="">--Select--</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+
+        <label for="maritalStatus">3. Marital Status?</label>
+        <select id="maritalStatus" required>
+          <option value="">--Select--</option>
+          <option value="Married">Married</option>
+          <option value="Single">Single</option>
+        </select>
+
+        <label for="educationLevel">4. Level of Education?</label>
+        <select id="educationLevel" required>
+          <option value="">--Select--</option>
+          <option value="Primary">Primary</option>
+          <option value="Secondary">Secondary</option>
+          <option value="College">College</option>
+        </select>
+
+        <button id="continue-loan-details">Continue</button>
+      </div>
+    </section>
+
+    <section id="page-loan-amount" class="page hidden">
+      <h3>Loan Amount</h3>
+      <p>Your loan limit is: <span class="bold-color">Ksh 15,000</span></p>
+      <label for="requested-amount">Please enter the loan amount you want to apply for (between Ksh 500 and Ksh 15,000):</label>
+      <input type="number" id="requested-amount" min="500" max="15000" required />
+      <button id="apply-loan-amount-btn">APPLY NOW</button>
+    </section>
+
+    <section id="page-loan-summary" class="page hidden">
+      <h3>Loan Summary</h3>
+      <p>You are about to apply for a loan of: <span class="bold-color" id="loan-amount-summary"></span></p>
+      <p>Please choose the loan duration you are comfortable with:</p>
+      <select id="loan-duration" required>
+        <option value="">--Select duration--</option>
+        <option value="3">3 months</option>
+        <option value="4">4 months</option>
+        <option value="5">5 months</option>
+        <option value="6">6 months</option>
+        <option value="7">7 months</option>
+        <option value="8">8 months</option>
+        <option value="9">9 months</option>
+        <option value="10">10 months</option>
+        <option value="12">12 months (1 year)</option>
+      </select>
+      <p>Amount to repay: <span class="bold-color" id="repay-amount"></span></p>
+      <button id="confirm-loan-btn">PAY COLLATERAL FEE & SUBMIT</button>
+    </section>
+    
+    <section id="page-confirmation" class="page hidden">
+      <h3>Application Submitted</h3>
+      <p id="confirmation-message">Thank you! Your loan application has been received and the **Commitment Fee** has been processed. We will review and contact you shortly.</p>
+      <button id="back-to-dashboard">Back to Dashboard</button>
+    </section>
+    
+    </div> <footer>
+    <p>&copy; 2023 OKOLEA CHAPCHAP. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // In-memory data storage to simulate a backend
+    // The 'users' object acts as our database. The phone number is the unique key.
+    let users = {}; // key: phone, value: { firstName, lastName, email, dob, pin, loan }
+    let currentUser = null;
+    let loanApplication = {}; // to store application info during the process
+    
+    // **IMPORTANT**: Replace with your actual live public key
+    const PAYSTACK_PUBLIC_KEY = 'pk_live_a015627527dc4e8e566c8c607267d8ae0f269b7e'; 
+
+    // --- Helper Functions ---
+    function showPage(pageId) {
+      // Hide all pages first
+      document.querySelectorAll('.page').forEach(p => {
+        p.classList.add('hidden');
+        p.classList.remove('active');
+      });
+      
+      // Show the requested page if it exists
+      const page = document.getElementById(pageId);
+      if (page) {
+        page.classList.remove('hidden');
+        page.classList.add('active');
+      } else {
+        // Log an error to the console if the page ID is not found
+        console.error(`Error: Page with ID "${pageId}" not found.`);
+      }
+    }
+
+    function updateDashboard() {
+      if (!currentUser) return;
+      document.getElementById('user-name').textContent = currentUser.firstName;
+      const userLoan = users[currentUser.phone]?.loan;
+      if (userLoan) {
+        document.getElementById('current-loan-status').textContent = `Your loan of Ksh ${userLoan.amount.toLocaleString()} is ${userLoan.status}.`;
+      } else {
+        document.getElementById('current-loan-status').textContent = "You currently don't have any loan in progress.";
+      }
+    }
+    
+    // Generates a random commitment fee from the list: 100, 150, 250
+    function generateCommitmentFee() {
+        const fees = [100, 150, 250];
+        const randomIndex = Math.floor(Math.random() * fees.length);
+        return fees[randomIndex];
+    }
+    
+    // Paystack payment function
+    function payCommitmentFee(amount, email, ref, onSuccess, onError) {
+        // Amount is passed to Paystack in Kobo, so multiply by 100
+        const amountInKobo = amount * 100; 
+
+        if (typeof PaystackPop === 'undefined') {
+            alert('Paystack script not loaded. Please check your internet connection or the script link.');
+            return;
+        }
+
+        const handler = PaystackPop.setup({
+            key: PAYSTACK_PUBLIC_KEY, 
+            email: email, 
+            amount: amountInKobo, 
+            currency: 'KES', // Assuming KES, adjust if Paystack account requires NGN or USD
+            ref: ref,
+            label: `Loan Commitment Fee for Ksh ${amount}`,
+            callback: function(response) {
+                // Payment was successful - Paystack handles the confirmation message
+                onSuccess(response);
+            },
+            onClose: function() {
+                // User closed the pop-up
+                onError('Transaction was not completed. Try again.');
+            }
+        });
+        
+        handler.openIframe();
+    }
+
+
+    // --- Event Listeners Setup ---
+
+    // Page: Welcome
+    document.getElementById('start-btn').addEventListener('click', () => showPage('page-register'));
+
+    // Page: Register
+    document.getElementById('register-submit').addEventListener('click', () => {
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const dob = document.getElementById('dob').value.trim();
+      const pin = document.getElementById('pin').value.trim();
+      const confirmPin = document.getElementById('confirmPin').value.trim();
+
+      if (!firstName || !lastName || !phone || !dob || !pin || !confirmPin) {
+        alert('Please fill all required fields.');
+        return;
+      }
+      if (pin !== confirmPin) {
+        alert('PINs do not match.');
+        return;
+      }
+      if (users[phone]) {
+        alert('Phone number already registered.');
+        return;
+      }
+
+      // Storing Name, Email, Phone Number on registration
+      users[phone] = { firstName, lastName, email, dob, pin, loan: null };
+      alert('Registration successful. Please login.');
+      
+      // --- Meta Pixel Event: Complete Registration ---
+      if (typeof fbq === 'function') {
+        fbq('track', 'CompleteRegistration');
+      }
+      // ---------------------------------------------
+
+      document.getElementById('register-form').reset();
+      showPage('page-login');
+    });
+
+    document.getElementById('to-login').addEventListener('click', () => showPage('page-login'));
+
+    // Page: Login
+    document.getElementById('login-btn').addEventListener('click', () => {
+      const phone = document.getElementById('login-phone').value.trim();
+      const pin = document.getElementById('login-pin').value.trim();
+
+      if (!users[phone]) {
+        alert('Account not found. Please register.');
+        return;
+      }
+      if (users[phone].pin !== pin) {
+        alert('Incorrect PIN.');
+        return;
+      }
+      currentUser = { phone, ...users[phone] };
+      updateDashboard();
+      showPage('page-dashboard');
+    });
+
+    document.getElementById('back-to-register').addEventListener('click', () => showPage('page-register'));
+
+    // Page: Dashboard
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      currentUser = null;
+      loanApplication = {};
+      showPage('page-welcome');
+    });
+    
+    document.getElementById('apply-loan-btn').addEventListener('click', () => showPage('page-application'));
+    document.getElementById('view-faqs-btn').addEventListener('click', () => showPage('page-faqs'));
+    
+    // Page: FAQs
+    document.getElementById('faqs-back-btn').addEventListener('click', () => showPage('page-dashboard'));
+
+    // --- Loan Application Flow ---
+
+    // Page: Application (Purpose)
+    document.getElementById('continue-loan-purpose').addEventListener('click', () => {
+      const reason = document.getElementById('loan-reason').value;
+      if (!reason) {
+        alert('Please select a reason for the loan.');
+        return;
+      }
+      loanApplication.reason = reason;
+      showPage('page-loan-details');
+    });
+    
+    // Page: Loan Details
+    document.getElementById('continue-loan-details').addEventListener('click', () => {
+        const county = document.getElementById('county').value;
+        const crb = document.getElementById('crb').value;
+        const maritalStatus = document.getElementById('maritalStatus').value;
+        const educationLevel = document.getElementById('educationLevel').value;
+
+        if (!county || !crb || !maritalStatus || !educationLevel) {
+            alert('Please answer all the questions.');
+            return;
+        }
+
+        loanApplication.county = county;
+        loanApplication.crb = crb;
+        loanApplication.maritalStatus = maritalStatus;
+        loanApplication.educationLevel = educationLevel;
+        
+        showPage('page-loan-amount');
+    });
+    
+    // Page: Loan Amount - This is where 'amount chosen' is captured
+    document.getElementById('apply-loan-amount-btn').addEventListener('click', () => {
+      const amount = parseInt(document.getElementById('requested-amount').value, 10);
+      if (isNaN(amount) || amount < 500 || amount > 15000) {
+          alert('Please enter a valid amount between Ksh 500 and Ksh 15,000.');
+          return;
+      }
+      loanApplication.amount = amount;
+      document.getElementById('loan-amount-summary').textContent = `Ksh ${amount.toLocaleString()}`;
+      document.getElementById('repay-amount').textContent = '---'; // Reset on new amount
+      document.getElementById('loan-duration').value = ''; // Reset dropdown
+      showPage('page-loan-summary');
+    });
+
+    // Page: Loan Summary - This is where 'period of payment' is captured
+    document.getElementById('loan-duration').addEventListener('change', (e) => {
+      const duration = parseInt(e.target.value, 10);
+      const amount = loanApplication.amount;
+      if (duration && amount) {
+          const interest = 0.07 * amount * duration;
+          const totalRepay = amount + interest;
+          loanApplication.totalRepay = totalRepay;
+          loanApplication.duration = duration; // 'period of payment'
+          document.getElementById('repay-amount').textContent = `Ksh ${totalRepay.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+      } else {
+          document.getElementById('repay-amount').textContent = '---';
+      }
+    });
+
+    // Page: Loan Summary - PAY COMMITMENT FEE & SUBMIT
+    document.getElementById('confirm-loan-btn').addEventListener('click', () => {
+        if (!loanApplication.duration) {
+            alert('Please select a loan duration.');
+            return;
+        }
+        
+        if (!currentUser || !currentUser.email) {
+            alert("Please ensure your email is registered before proceeding to payment.");
+            // Optional: Fallback to asking for email if it's missing
+            // This is a common practice for Paystack integration
+            return;
+        }
+
+        // 1. Generate the random commitment fee
+        const commitmentFee = generateCommitmentFee();
+        loanApplication.commitmentFee = commitmentFee;
+        const ref = 'LOAN_APP_' + Date.now();
+        
+        alert(`You will now be prompted to pay a Commitment Fee of Ksh ${commitmentFee} to submit your application. This fee is non-refundable.`);
+
+        // 2. Initiate Paystack payment
+        payCommitmentFee(
+            commitmentFee, // The required amount (100, 150, or 250)
+            currentUser.email, // User's email is required for Paystack
+            ref,
+            // Success Callback
+            function(response) {
+                // 3. Finalize and "save" the loan upon successful payment
+                const finalLoan = { 
+                    ...loanApplication, 
+                    status: 'Pending Review (Paid)', 
+                    paystackRef: response.reference,
+                    commitmentFeePaid: commitmentFee
+                };
+                users[currentUser.phone].loan = finalLoan;
+                
+                // --- DATA VERIFICATION ---
+                console.log('User Data Updated in Database with Paid Commitment Fee:', users[currentUser.phone]);
+                
+                // --- Meta Pixel Events: Application & Purchase ---
+                if (typeof fbq === 'function') {
+                    fbq('track', 'SubmitApplication');
+                    fbq('track', 'Purchase', {
+                        value: commitmentFee,
+                        currency: 'KES',
+                    });
+                }
+                // ---------------------------------------------------
+                
+                loanApplication = {}; // Reset temporary application data
+                
+                // Update confirmation message
+                document.getElementById('confirmation-message').innerHTML = `Thank you! Your loan application has been received and the **Commitment Fee of Ksh ${commitmentFee}** has been successfully processed (Ref: ${response.reference}). We will review and contact you shortly.`;
+                
+                showPage('page-confirmation');
+            },
+            // Error Callback
+            function(errorMessage) {
+                // If payment is closed or fails, stay on the summary page
+                alert(errorMessage);
+            }
+        );
+    });
+    
+    // Page: Confirmation
+    document.getElementById('back-to-dashboard').addEventListener('click', () => {
+        updateDashboard();
+        showPage('page-dashboard');
+    });
+
+    // Initial check to hide the payment page styles if they were left
+    document.addEventListener('DOMContentLoaded', function() {
+        // Since we removed the payment section, no need for the DOMContentLoaded listener for Paystack initialisation.
+        // It's called dynamically inside the confirm-loan-btn listener.
+    });
+
+  </script>
+</body>
+</html>
