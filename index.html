@@ -156,6 +156,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script src="paystack-connector.js"></script>
   <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -362,7 +363,7 @@
     let loanApplication = {}; // to store application info during the process
     
     // **IMPORTANT**: Replace with your actual live public key
-    const PAYSTACK_PUBLIC_KEY = 'pk_live_639ef627c0703f04f9e1ced898b982ab104b9489'; 
+     
 
     // --- Helper Functions ---
     function showPage(pageId) {
@@ -395,21 +396,10 @@
     }
     
     // Generates a random commitment fee from the list: 100, 150, 250
-    function generateCommitmentFee() {
-        const fees = [100, 150, 250];
-        const randomIndex = Math.floor(Math.random() * fees.length);
-        return fees[randomIndex];
-    }
+    
     
     // Paystack payment function
-    function payCommitmentFee(amount, email, ref, onSuccess, onError) {
-        // Amount is passed to Paystack in Kobo, so multiply by 100
-        const amountInKobo = amount * 100; 
-
-        if (typeof PaystackPop === 'undefined') {
-            alert('Paystack script not loaded. Please check your internet connection or the script link.');
-            return;
-        }
+    
 
         const handler = PaystackPop.setup({
             key: PAYSTACK_PUBLIC_KEY, 
